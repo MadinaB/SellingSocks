@@ -1,0 +1,9 @@
+{% extends "main.html" %}
+{% block content %}
+<script>
+    window.setTimeout(function(){window.location.href = "{{url_for('socks')}}";}, 5000);
+</script>
+<span class="big_sock_image container">
+</span>
+{% endblock %}
+

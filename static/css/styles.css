@@ -1,0 +1,61 @@
+
+html, body, head{
+    background-color: #F7DBA6;
+    font-family: 'Oleo Script';
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+a, a:active, a:visited, .txt{
+    color: #333333;
+    display:inline-block;
+}
+
+
+a:hover{
+    color: #70D1FE;
+}
+
+.header_back{
+    margin: 10px 0px;
+    padding: 10px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    background-color: #F7DBA6;
+}
+
+.header_txt{
+    margin: 5px;
+    padding: 5px;
+    display:inline-block;
+    font-size: 20px;
+}
+
+.auth_details {
+    float: right;
+}
+
+.image {
+    background-color: black;
+    background-image: url(../img/socks.gif);
+    background: url(socks.gif)  repeat 0 0;
+    min-height: 50px;
+    min-width: 50px;
+    background-size: 60px 60px;
+    display: block;
+}
+.main_image {
+    background-image: url(../img/socks.gif);
+    display:inline-block;
+    min-height: 50px;
+    min-width: 50px;
+    background-size: 70px 70px;
+}
+
+.big_sock_image{
+    background-image: url(../img/socks.gif);
+    display:inline-block;
+    min-height: 700px;
+    min-width: 700px;
+    background-size: 700px 700px;
+}
+

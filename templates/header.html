@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="image"> </div>
+<div class="jumbotron header_back" >
+    <span class="item header_txt">
+        <p class="txt" >Sell your </p> <a class="font-weight-bold" style="color: #6DBAFB" href="{{url_for('socks')}}">socks</a>
+	</span>
+	<span>
+        {% for detail in auth_details %}
+        <div class="item auth_details header_txt">
+            <a href="{{url_for(auth_details[detail])}}">{{detail}}</a>
+        </div>
+        {% endfor %}
+	</span>
+</div>
+</div>
+
