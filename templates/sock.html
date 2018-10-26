@@ -1,19 +1,25 @@
 {% extends "main.html" %}
 {% block content %}
 {% include "header.html" %}
-<div class=" container row-sm-12">
-    <div class="col-sm-3">
-        <h1>  </h1>
-        <p> {{ sock.name }} </p>
-        <p> {{ sock.description }} </p>
-        <img class="photo_card" src="{{ sock.picture }}">
-        <p> {{ sock.price }} </p>
-        <p> {{ sock.email }} </p>
-        <div class=" container row-sm-3">
-            <a href="{{url_for('sock',sock_id=sock.id)}}edit/" class= "button"> Update </a>
-        <a href="{{url_for('sock',sock_id=sock.id)}}delete/" class= "button"> Delete </a>
+
+<div class="vertical-center" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>  </h1>
+                <p> {{ sock.name }} </p>
+                <p> {{ sock.description }} </p>
+                <img class="photo_card" src="{{ sock.picture }}">
+                <p> Price: {{ sock.price }}$ </p>
+                <p> Get from: {{ sock.email }} </p>
+                <a href="{{url_for('sock',sock_id=sock.id)}}edit/"> Update </a>
+                <a href="{{url_for('sock',sock_id=sock.id)}}delete/" class= "button"> Delete </a>
+                
         </div>
     </div>
- </div>
+</div>
+
 {% endblock %}
+
+
 

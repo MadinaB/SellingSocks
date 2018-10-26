@@ -10,8 +10,8 @@
                 <a href="{{url_for('sock',sock_id=sock.id)}}"><p>{{sock.name}}</p></a>
                 <p> {{ sock.description }} </p>
                 <img class="photo_card" src="{{ sock.picture }}">
-                <p> {{ sock.price }} </p>
-                <p> {{ sock.email }} </p>
+                <p> Price: {{ sock.price }}$ </p>
+                <p> Get from: {{ sock.email }} </p>
             </div>
         {% endfor %}
     </div>
