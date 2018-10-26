@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+<div class=" container row-sm-12">
+<div class="col-sm-3">
+<h1>Hurray! You plan to sell your socks! </h1>
+<form action="#" method='post'>
+<p>Name of your socks:</p>
+<input type='text' size='50' name='name' value="{{sock.name}}">
+ <p>Tell a little about your socks:</p>
+<input type='text' size='50' name='description' value="{{sock.description}}">
+<p>Please, give me a link to photo of your socks:</p>
+<input type='text' size='50' name='picture' value="{{sock.picture}}">
+<p>Price:</p>
+<input type='text' size='50' name='price' value="{{sock.price}}">
+<h1> </h1>
+<input type='submit' value='Update!'>
+</div>
+</div>
+
+{% endblock %}
+

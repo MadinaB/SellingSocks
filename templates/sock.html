@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class=" container row-sm-12">
+    <div class="col-sm-3">
+        <h1>  </h1>
+        <p> {{ sock.name }} </p>
+        <p> {{ sock.description }} </p>
+        <img class="photo_card" src="{{ sock.picture }}">
+        <p> {{ sock.price }} </p>
+        <p> {{ sock.email }} </p>
+    </div>
+ </div>
+{% endblock %}
+

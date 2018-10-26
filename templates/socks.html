@@ -2,11 +2,17 @@
 {% block content %}
 {% include "header.html" %}
 <h1>  </h1>
-{% for sock_row in socks | batch(3, '&nbsp;') %}
+{% for sock_row in socks | batch(3) %}
 <div class="container">
     <div class="row-sm-12">
         {% for sock in sock_row %}
-            <div class="col-sm-3 container-of-sock">{{ sock.name }}</div>
+            <div class="col-sm-3 container-of-sock">
+                <a href="{{url_for('sock',sock_id=sock.id)}}"><p>{{sock.name}}</p></a>
+                <p> {{ sock.description }} </p>
+                <img class="photo_card" src="{{ sock.picture }}">
+                <p> {{ sock.price }} </p>
+                <p> {{ sock.email }} </p>
+            </div>
         {% endfor %}
     </div>
 </div>

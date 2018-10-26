@@ -136,7 +136,7 @@ def gdisconnect():
         del login_session['picture']
         response = make_response(json.dumps('Successfully disconnected.'), 200)
         response.headers['Content-Type'] = 'application/json'
-        return response
+        return redirect('/')
     else:
         response = make_response(json.dumps('Failed to revoke token for given user.', 400))
         response.headers['Content-Type'] = 'application/json'
@@ -147,7 +147,56 @@ def gdisconnect():
 def socks():
     auth_details = getAuthDetails()
     socks = session.query(Sock).all()
+    print socks
     return render_template('socks.html', auth_details=auth_details, socks=socks)
+
+@app.route('/sock/<int:sock_id>/')
+def sock(sock_id):
+    auth_details = getAuthDetails()
+    sock = session.query(Sock).filter_by(id=sock_id).one()
+    return render_template('sock.html', auth_details=auth_details, sock=sock)
+
+@app.route('/sock/new/', methods=['GET', 'POST'])
+def new_sock():
+    auth_details = getAuthDetails()
+    if 'username' not in login_session:
+        return redirect('/signin')
+    if request.method == 'POST':
+        new_sock = Sock(name=request.form['name'],
+                        email=login_session['email'],
+                        picture=request.form['picture'],
+                        price=request.form['price'],
+                        description=request.form['description'],
+                        seller=login_session['gplus_id'])
+        session.add(new_sock)
+        session.commit()
+        flash('Successfully added the sock.')
+        return redirect('/')
+    else:
+        return render_template('new_sock.html', auth_details=auth_details)
+
+
+@app.route('/sock/<int:sock_id>/edit/', methods=['GET', 'POST'])
+def edit_sock(sock_id):
+    auth_details = getAuthDetails()
+    sock_to_edit = session.query(Sock).filter_by(id=sock_id).one()
+    if 'username' not in login_session:
+        return redirect('/signin')
+    if sock_to_edit is None:
+        return ("<script>function f() {alert('Fake path to sock'); window.history.back();}</script><body onload='f()''>")
+    if sock_to_edit.email!=login_session['email']:
+        return ("<script>function f() {alert('Not your sock');window.history.back();}</script><body onload='f()''>")
+    if request.method == 'POST':
+        sock_to_edit.name=request.form['name']
+        sock_to_edit.description=request.form['description']
+        sock_to_edit.picture=request.form['picture']
+        sock_to_edit.price=request.form['price']
+        session.add(sock_to_edit)
+        session.commit()
+        flash('Successfully updated the sock.')
+        return redirect('/')
+    else:
+        return render_template('edit_sock.html', auth_details=auth_details, sock=sock_to_edit)
 
 @app.route('/')
 def runnin_sock():
