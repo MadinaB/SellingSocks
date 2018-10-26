@@ -28,3 +28,9 @@ View page in browser
 # Demo
 
 ![ ](demo/demo.gif)
+
+
+
+# References
+
+This course was developed as a part of Udacity Full Stack Web Development Nanodegree Course and according to tutorial lessons of the course.
