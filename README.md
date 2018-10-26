@@ -24,3 +24,7 @@ Run application
 
 View page in browser
 * `http://localhost:8000/`
+
+# Demo
+
+![ ](demo/demo.gif)
