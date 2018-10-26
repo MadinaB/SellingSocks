@@ -146,7 +146,8 @@ def gdisconnect():
 @app.route('/socks')
 def socks():
     auth_details = getAuthDetails()
-    return render_template('socks.html', auth_details=auth_details)
+    socks = session.query(Sock).all()
+    return render_template('socks.html', auth_details=auth_details, socks=socks)
 
 @app.route('/')
 def runnin_sock():

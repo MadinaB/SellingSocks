@@ -1,5 +1,29 @@
 {% extends "main.html" %}
 {% block content %}
 {% include "header.html" %}
-<h1> All your socks here </h1>
+<h1>  </h1>
+{% for sock_row in socks | batch(3, '&nbsp;') %}
+<div class="container">
+    <div class="row-sm-12">
+        {% for sock in sock_row %}
+            <div class="col-sm-3 container-of-sock">{{ sock.name }}</div>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+
+<div class="container">
+    <div class="row-sm-12">
+        <div class="col-sm-3 container-of-sock">
+            One of three columns
+        </div>
+        <div class="col-sm-3 container-of-sock">
+            One of three columns
+        </div>
+        <div class="col-sm-3 container-of-sock">
+            One of three columns
+        </div>
+    </div>
+</div>
+
 {% endblock %}
