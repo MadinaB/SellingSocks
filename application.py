@@ -21,7 +21,7 @@ def getAuthDetails():
     if login_session.get('access_token') is None:
         return {'signin': 'signin'}
     else:
-        return {'mysocks': 'mysocks', 'signout': 'gdisconnect'}
+        return {'mysocks': 'mysocks','sell':'new_sock',  'signout': 'gdisconnect'}
 
 # Google signin
 @app.route('/signin')
