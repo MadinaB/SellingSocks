@@ -21,6 +21,15 @@ class Sock(Base):
     description = Column(String(250))
     seller = Column(Integer)
 
+    def serialize(self):
+        return {'id': self.id,
+        'name': self.name,
+        'email': self.email,
+        'picture': self.picture,
+        'price': self.price,
+        'description' : self.description,
+        'seller': self.seller,}
+
 
 engine = create_engine('sqlite:///selling_socks.db')
 Base.metadata.create_all(engine)

@@ -21,8 +21,9 @@ def getAuthDetails():
     if login_session.get('access_token') is None:
         return {'signin': 'signin'}
     else:
-        return {'mysocks': 'socks', 'signout': 'gdisconnect'}
+        return {'mysocks': 'mysocks', 'signout': 'gdisconnect'}
 
+# Google signin
 @app.route('/signin')
 def signin():
     auth_details = getAuthDetails()
@@ -143,18 +144,7 @@ def gdisconnect():
     return response
 
 
-@app.route('/socks')
-def socks():
-    auth_details = getAuthDetails()
-    socks = session.query(Sock).all()
-    print socks
-    return render_template('socks.html', auth_details=auth_details, socks=socks)
-
-@app.route('/sock/<int:sock_id>/')
-def sock(sock_id):
-    auth_details = getAuthDetails()
-    sock = session.query(Sock).filter_by(id=sock_id).one()
-    return render_template('sock.html', auth_details=auth_details, sock=sock)
+# CRUD
 
 @app.route('/sock/new/', methods=['GET', 'POST'])
 def new_sock():
@@ -175,6 +165,11 @@ def new_sock():
     else:
         return render_template('new_sock.html', auth_details=auth_details)
 
+@app.route('/sock/<int:sock_id>/')
+def sock(sock_id):
+    auth_details = getAuthDetails()
+    sock = session.query(Sock).filter_by(id=sock_id).one()
+    return render_template('sock.html', auth_details=auth_details, sock=sock)
 
 @app.route('/sock/<int:sock_id>/edit/', methods=['GET', 'POST'])
 def edit_sock(sock_id):
@@ -196,13 +191,67 @@ def edit_sock(sock_id):
         flash('Successfully updated the sock.')
         return redirect('/')
     else:
-        return render_template('edit_sock.html', auth_details=auth_details, sock=sock_to_edit)
+        return render_template('edit_sock.html', auth_details=auth_details, sock=sock_to_edit, login_session= login_session)
+
+
+
+@app.route('/sock/<int:sock_id>/delete/', methods=['GET', 'POST'])
+def delete_sock(sock_id):
+    auth_details = getAuthDetails()
+    sock_to_edit = session.query(Sock).filter_by(id=sock_id).one()
+    if 'username' not in login_session:
+        return redirect('/signin')
+    if sock_to_edit is None:
+        return ("<script>function f() {alert('Fake path to sock'); window.history.back();}</script><body onload='f()''>")
+    if sock_to_edit.email!=login_session['email']:
+        return ("<script>function f() {alert('Not your sock');window.history.back();}</script><body onload='f()''>")
+    else:
+        session.delete(sock_to_edit)
+        session.commit()
+        flash('Successfully deleted the sock.')
+        return redirect('/')
+
+
+
+# API
+
+@app.route('/socks/JSON/')
+def socks_json():
+    socks = session.query(Sock).all()
+    return jsonify(socks=[sock.serialize() for sock in socks])
+
+@app.route('/sock/<int:sock_id>/JSON/')
+def sock_json(sock_id):
+    sock = session.query(Sock).filter_by(id=sock_id).one()
+    if sock is None:
+        return "No sock with this data."
+    return jsonify(sock.serialize())
+
+
+# Main pages
 
 @app.route('/')
 def runnin_sock():
     auth_details = getAuthDetails()
     return render_template('runnin_sock.html', auth_details=auth_details)
 
+
+@app.route('/socks')
+def socks():
+    auth_details = getAuthDetails()
+    socks = session.query(Sock).all()
+    return render_template('socks.html', auth_details=auth_details, socks=socks)
+
+
+@app.route('/mysocks')
+def mysocks():
+    auth_details = getAuthDetails()
+    socks = session.query(Sock).filter_by(email=login_session['email']).all()
+    return render_template('mysocks.html', auth_details=auth_details, socks=socks, login_session=login_session)
+
+
+
+# Point of application run
 
 if __name__ == '__main__':
     auth_details = {'signin': 'signin'}

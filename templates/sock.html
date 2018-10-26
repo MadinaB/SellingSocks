@@ -9,6 +9,10 @@
         <img class="photo_card" src="{{ sock.picture }}">
         <p> {{ sock.price }} </p>
         <p> {{ sock.email }} </p>
+        <div class=" container row-sm-3">
+            <a href="{{url_for('sock',sock_id=sock.id)}}edit/" class= "button"> Update </a>
+        <a href="{{url_for('sock',sock_id=sock.id)}}delete/" class= "button"> Delete </a>
+        </div>
     </div>
  </div>
 {% endblock %}
