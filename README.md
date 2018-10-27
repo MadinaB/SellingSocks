@@ -47,3 +47,11 @@ To get data about one sock with sock_id being an id of already existing sock:
 # References
 
 This course was developed as a part of Udacity Full Stack Web Development Nanodegree Course and according to tutorial lessons of the course.
+
+
+# Yahooo!
+
+![ ](demo/review.png)
+
+Thanks to Udacity and Full-Stack Web Develeoper mentoring team! I really enjoyed learning from you. Reviews and support you provide are very inspirational  throughout the whole course :)
+
