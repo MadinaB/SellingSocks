@@ -12,9 +12,8 @@
                 <img class="photo_card" src="{{ sock.picture }}">
                 <p> Price: {{ sock.price }}$ </p>
                 <p> Get from: {{ sock.email }} </p>
-                <a href="{{url_for('sock',sock_id=sock.id)}}edit/"> Update </a>
+                <a href="{{url_for('sock',sock_id=sock.id)}}edit/" class= "button"> Update </a>
                 <a href="{{url_for('sock',sock_id=sock.id)}}delete/" class= "button"> Delete </a>
-                
         </div>
     </div>
 </div>
