@@ -25,6 +25,19 @@ Run application
 View page in browser
 * `http://localhost:8000/`
 
+
+# API
+
+You can view json representation of any item in this catalog!
+
+To get data regarding all socks:
+* `http://localhost:8000/socks/JSON/`
+
+To get data about one sock with sock_id being an id of already existing sock:
+* `http://localhost:8000/sock/sock_id/JSON/`
+
+
+
 # Demo
 
 ![ ](demo/demo.gif)

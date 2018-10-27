@@ -4,12 +4,14 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
     picture = Column(String(250))
+
 
 class Sock(Base):
     __tablename__ = 'sock'
@@ -23,12 +25,12 @@ class Sock(Base):
 
     def serialize(self):
         return {'id': self.id,
-        'name': self.name,
-        'email': self.email,
-        'picture': self.picture,
-        'price': self.price,
-        'description' : self.description,
-        'seller': self.seller,}
+                'name': self.name,
+                'email': self.email,
+                'picture': self.picture,
+                'price': self.price,
+                'description': self.description,
+                'seller': self.seller, }
 
 
 engine = create_engine('sqlite:///selling_socks.db')
