@@ -6,7 +6,7 @@ Feel confident about your future, now you will always have a place where you can
 # Software requirements
 
 You will need Python 2.7, Flask and Sqlalchemy to run this application. 
-1. You can either install vagrant and virtual box along with cloning this [repo](https://github.com/udacity/fullstack-nanodegree-vm) and run this application inside `/vagrant/catalog`.
+1.  You can either install vagrant and virtual box along with getting configuration by cloning this [file](https://github.com/udacity/fullstack-nanodegree-vm/blob/master/vagrant/Vagrantfile). Make sure to `vagrant up`  and `vagrant ssh` before running the application.
 2. or you can try to configure your own computer via following stepes.
 * Install pip and Python 2.7 
 * `pip install flask`
