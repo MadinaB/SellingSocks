@@ -13,11 +13,23 @@ You will need Python 2.7, Flask and Sqlalchemy to run this application.
 
 # Getting Started
 
+Prepare database:
+* `brew install postgresql`
+
+```
+psql postgres
+postgres=# CREATE DATABASE sellingsocks;
+postgres=# CREATE USER socks;
+postgres=# ALTER ROLE socks WITH PASSWORD 'loveforsocks';
+postgres=# GRANT ALL PRIVILEGES ON DATABASE sellingsocks TO socks;
+\q
+```
+
 Please, run before program start this script to populate db:
 * `python populate_socks_db.py`
 
 Run application
-* `python application.py `
+* `python application.py`
 
 View page in browser
 * `http://localhost:8000/`

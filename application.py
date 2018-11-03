@@ -21,7 +21,7 @@ APPLICATION_NAME = 'SellingSocks'
 """
     Connecting to db.
 """
-engine = create_engine('sqlite:///selling_socks.db?check_same_thread=False')
+engine = create_engine('postgresql://socks:loveforsocks@localhost/sellingsocks')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()

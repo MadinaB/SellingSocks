@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from socks_db import Base, User, Sock
 
-engine = create_engine('sqlite:///selling_socks.db')
+engine = create_engine('postgresql://socks:loveforsocks@localhost/sellingsocks')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
@@ -62,7 +62,7 @@ sock1 = Sock(
     "wp-content/uploads/2018/08/HTB1xgucC79WBuNjSspeq6yz5VXaT.jpg",
     price=10,
     description="These socks are dirty. I wanna sell them.",
-    seller=1)
+    seller="1")
 session.add(sock1)
 session.commit()
 
@@ -73,7 +73,7 @@ sock2 = Sock(
     "/static/img/s_6.png",
     price=5,
     description="Perfect socks for perfect people.",
-    seller=4)
+    seller="4")
 session.add(sock2)
 session.commit()
 
@@ -85,7 +85,7 @@ sock3 = Sock(
     price=5,
     description="I have took photo of my son and printed it to many many " +
     "socks to share with the world. 5$, please",
-    seller=5)
+    seller="5")
 session.add(sock3)
 session.commit()
 
@@ -97,7 +97,7 @@ sock4 = Sock(
     "static/img/s_5.png",
     price=5,
     description="Selling socks with cats",
-    seller=5)
+    seller="5")
 session.add(sock4)
 session.commit()
 
@@ -109,7 +109,7 @@ sock5 = Sock(
     "static/img/s_10.jpg",
     price=5,
     description="Perfect socks for perfect people.",
-    seller=4)
+    seller="4")
 session.add(sock5)
 session.commit()
 
@@ -121,7 +121,7 @@ sock6 = Sock(
     "static/img/s_7.png",
     price=50,
     description="Socks from limited collection",
-    seller=3)
+    seller="3")
 session.add(sock6)
 session.commit()
 
